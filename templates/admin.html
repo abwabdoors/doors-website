@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>إدارة الأبواب</title>
+</head>
+
+<body>
+
+    <h1>إدارة الأبواب</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <label>رقم الباب:</label>
+        <input type="text" name="code" required>
+
+        <br><br>
+
+        <label>السعر:</label>
+        <input type="number" name="price" required>
+
+        <br><br>
+
+        <label>نوع الباب:</label>
+
+        <select name="type">
+
+            <option value="type1">النوع 1</option>
+            <option value="type2">النوع 2</option>
+            <option value="type3">النوع 3</option>
+
+        </select>
+
+        <br><br>
+
+        <label>المميزات:</label>
+        <br>
+
+        <textarea name="features"
+                  rows="5"
+                  cols="40"
+                  required></textarea>
+
+        <br><br>
+
+        <label>صورة الباب:</label>
+
+        <input type="file"
+               name="image"
+               accept=".jpg,.jpeg,.png"
+               required>
+
+        <br><br>
+
+        <button type="submit">
+            إضافة الباب
+        </button>
+
+    </form>
+
+
+    <hr>
+
+    <h2>الأبواب الموجودة</h2>
+
+    {% for door in doors %}
+
+        <div>
+
+            <strong>
+                {{ door.code }}
+            </strong>
+
+            -
+
+            {{ door.price }} درهم
+
+            -
+
+            {{ door.type }}
+
+            <form method="POST"
+                  action="/delete/{{ door.code }}"
+                  style="display:inline;">
+
+                <button type="submit">
+                    حذف
+                </button>
+
+            </form>
+
+        </div>
+
+        <br>
+
+    {% endfor %}
+
+
+</body>
+
+</html>
