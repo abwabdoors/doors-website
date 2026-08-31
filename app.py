@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 app.secret_key = "CHANGE_THIS_TO_A_RANDOM_SECRET"
-ADMIN_CODE = "1234"
+ADMIN_CODE = "aZ@z_rI\-/ab#JT31781"
 
 IMAGE_FOLDER = "static/images"
 
