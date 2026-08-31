@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>متجر الأبواب</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #222;
+        }
+
+        /* =========================
+           رأس الموقع
+        ========================= */
+
+        header {
+            background-color: #4f81bd;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fire-icon {
+            font-size: 45px;
+            margin-bottom: 5px;
+        }
+
+        header h1 {
+            margin: 5px 0 10px 0;
+            font-size: 30px;
+        }
+
+        .subtitle {
+            font-size: 19px;
+            margin: 0 0 15px 0;
+        }
+
+        .telephone {
+            font-size: 18px;
+        }
+
+        .telephone strong {
+            font-size: 21px;
+        }
+
+        /* =========================
+           مطفأة اليسار
+        ========================= */
+
+        .extinguisher-logo {
+            position: absolute;
+            left: 20px;
+            top: 5px;
+            z-index: 10;
+            transform: scale(2);
+            transform-origin: top left;
+        }
+
+        /* =========================
+           مطفأة اليمين
+        ========================= */
+
+        .extinguisher-logo-right {
+            position: absolute;
+            right: 20px;
+            top: 5px;
+            z-index: 10;
+            transform: scale(2);
+            transform-origin: top right;
+        }
+
+        /* =========================
+           أنواع الأبواب
+        ========================= */
+
+        .types {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .type-button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #d4af37;
+            color: #111111;
+            font-weight: bold;
+        }
+
+        .type-button:hover {
+            background-color: #e0bd45;
+            color: #000000;
+        }
+
+        /* =========================
+           البحث
+        ========================= */
+
+        .search-box {
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        .search-box input {
+            width: 90%;
+            max-width: 500px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 17px;
+            text-align: center;
+        }
+
+        .search-result {
+            margin-top: 8px;
+            font-size: 16px;
+        }
+
+        /* =========================
+           منطقة الأبواب
+        ========================= */
+
+        .doors {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* =========================
+           بطاقة الباب
+        ========================= */
+
+        .door {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .door-image {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            border-radius: 8px;
+            display: block;
+            margin: auto;
+        }
+
+        .door-code {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px;
+            color: #b8860b;
+        }
+
+        .features-button {
+            border: none;
+            background: none;
+            color: #0066cc;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .features {
+            display: none;
+            margin-top: 10px;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 20px;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        /* =========================
+           زر دخول الإدارة المخفي
+        ========================= */
+
+        .admin-login {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 18px;
+            height: 18px;
+            background-color: #f5f5f5;
+            border: none;
+            z-index: 9999;
+            cursor: pointer;
+            display: block;
+        }
+
+        /* =========================
+           الهاتف
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 20px 10px 25px;
+                min-height: 250px;
+                overflow: hidden;
+            }
+
+            header h1 {
+                font-size: 23px;
+                margin-top: 10px;
+            }
+
+            .fire-icon {
+                font-size: 35px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .telephone {
+                font-size: 15px;
+            }
+
+            .telephone strong {
+                font-size: 18px;
+            }
+
+            /* المطفأة اليسرى */
+
+            .extinguisher-logo {
+                left: -5px;
+                top: 5px;
+                transform: scale(0.75);
+                transform-origin: top left;
+            }
+
+            /* المطفأة اليمنى */
+
+            .extinguisher-logo-right {
+                right: -5px;
+                top: 5px;
+                transform: scale(0.75);
+                transform-origin: top right;
+            }
+
+            /* أزرار الأنواع */
+
+            .types {
+                padding: 15px 8px;
+                gap: 8px;
+            }
+
+            .type-button {
+                padding: 10px 14px;
+                font-size: 14px;
+            }
+
+            /* البحث */
+
+            .search-box {
+                padding: 10px;
+            }
+
+            .search-box input {
+                width: 100%;
+                font-size: 16px;
+                padding: 12px;
+            }
+
+            /* الأبواب */
+
+            .doors {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .door {
+                padding: 8px;
+                border-radius: 10px;
+            }
+
+            .door-image {
+                width: 100%;
+                height: 180px;
+                object-fit: contain;
+            }
+
+            .door-code {
+                font-size: 15px;
+                margin-top: 8px;
+            }
+
+            .price {
+                font-size: 17px;
+                margin: 8px 0;
+            }
+
+            .features-button {
+                font-size: 15px;
+            }
+
+            .features {
+                font-size: 15px;
+                line-height: 1.7;
+                padding: 8px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- =========================
+     رأس الموقع
+========================= -->
+
+<header>
+
+    <div class="fire-icon">
+        🔥
+    </div>
+
+
+    <!-- المطفأة اليسرى -->
+
+    <div class="extinguisher-logo">
+
+        <svg
+            width="100"
+            height="120"
+            viewBox="0 0 100 120"
+            xmlns="http://www.w3.org/2000/svg">
+
+            <rect
+                x="30"
+                y="35"
+                width="40"
+                height="70"
+                rx="8"
+                fill="#d62828"/>
+
+            <rect
+                x="40"
+                y="22"
+                width="20"
+                height="15"
+                rx="3"
+                fill="#333"/>
+
+            <path
+                d="M38 25 Q25 10 45 10 L65 10"
+                fill="none"
+                stroke="#333"
+                stroke-width="6"/>
+
+            <path
+                d="M65 25 Q85 25 82 50"
+                fill="none"
+                stroke="#222"
+                stroke-width="5"/>
+
+            <path
+                d="M50 52
+                   C40 65 45 75 50 80
+                   C58 73 62 65 55 55
+                   C55 65 50 67 50 52Z"
+                fill="#ffd166"/>
+
+        </svg>
+
+    </div>
+
+
+    <!-- المطفأة اليمنى -->
+
+    <div class="extinguisher-logo-right">
+
+        <svg
+            width="100"
+            height="120"
+            viewBox="0 0 100 120"
+            xmlns="http://www.w3.org/2000/svg">
+
+            <rect
+                x="30"
+                y="35"
+                width="40"
+                height="70"
+                rx="8"
+                fill="#d62828"/>
+
+            <rect
+                x="40"
+                y="22"
+                width="20"
+                height="15"
+                rx="3"
+                fill="#333"/>
+
+            <path
+                d="M38 25 Q25 10 45 10 L65 10"
+                fill="none"
+                stroke="#333"
+                stroke-width="6"/>
+
+            <path
+                d="M65 25 Q85 25 82 50"
+                fill="none"
+                stroke="#222"
+                stroke-width="5"/>
+
+            <path
+                d="M50 52
+                   C40 65 45 75 50 80
+                   C58 73 62 65 55 55
+                   C55 65 50 67 50 52Z"
+                fill="#ffd166"/>
+
+        </svg>
+
+    </div>
+
+
+    <h1>
+        متجر أبواب مقاومة للحريق
+    </h1>
+
+    <p class="subtitle">
+        أبواب الحماية من الحرائق والأمان
+    </p>
+
+    <div class="telephone">
+        للاستفسار والطلب:
+        <strong>0676352817</strong>
+    </div>
+
+</header>
+
+
+<!-- =========================
+     أزرار أنواع الأبواب
+========================= -->
+
+<div class="types">
+
+    <button
+        class="type-button"
+        onclick="showType('type1')">
+        أبواب النوع 1
+    </button>
+
+    <button
+        class="type-button"
+        onclick="showType('type2')">
+        أبواب النوع 2
+    </button>
+
+    <button
+        class="type-button"
+        onclick="showType('type3')">
+        أبواب النوع 3
+    </button>
+
+    <button
+        class="type-button"
+        onclick="showType('all')">
+        كل الأبواب
+    </button>
+
+</div>
+
+
+<!-- =========================
+     البحث
+========================= -->
+
+<div class="search-box">
+
+    <input
+        type="text"
+        id="doorSearch"
+        placeholder="🔎 ابحث عن رقم الباب مثل P025"
+        oninput="searchDoor()">
+
+    <div
+        id="searchResult"
+        class="search-result">
+    </div>
+
+</div>
+
+
+<!-- =========================
+     الأبواب
+========================= -->
+
+<div class="doors">
+
+{% for door in doors %}
+
+    <div class="door {{ door.type }}">
+
+        <img
+            src="{{ url_for('static', filename='images/' + door.image) }}"
+            class="door-image"
+            alt="{{ door.code }}">
+
+        <div class="door-code">
+            باب رقم {{ door.code }}
+        </div>
+
+        <div class="price">
+            {{ door.price }} درهم
+        </div>
+
+        <button
+            class="features-button"
+            onclick="showFeatures(this)">
+            المميزات
+        </button>
+
+        <div class="features">
+            {{ door.features }}
+        </div>
+
+    </div>
+
+{% endfor %}
+
+</div>
+
+
+<!-- =========================
+     JavaScript
+========================= -->
+
+<script>
+
+function showFeatures(button) {
+
+    var features =
+        button.nextElementSibling;
+
+    if (features.style.display === "block") {
+
+        features.style.display = "none";
+
+    } else {
+
+        features.style.display = "block";
+
+    }
+
+}
+
+
+function showType(type) {
+
+    var doors =
+        document.querySelectorAll(".door");
+
+    doors.forEach(function(door) {
+
+        if (type === "all") {
+
+            door.style.display = "block";
+
+        }
+
+        else if (door.classList.contains(type)) {
+
+            door.style.display = "block";
+
+        }
+
+        else {
+
+            door.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+function searchDoor() {
+
+    var search =
+        document
+        .getElementById("doorSearch")
+        .value
+        .trim()
+        .toUpperCase();
+
+
+    var doors =
+        document.querySelectorAll(".door");
+
+
+    var result =
+        document.getElementById("searchResult");
+
+
+    if (search === "") {
+
+        doors.forEach(function(door) {
+
+            door.style.display = "block";
+
+        });
+
+        result.textContent = "";
+
+        return;
+    }
+
+
+    var found = false;
+
+
+    doors.forEach(function(door) {
+
+        var code =
+            door.querySelector(".door-code");
+
+
+        if (code) {
+
+            var text =
+                code.textContent.toUpperCase();
+
+
+            if (text.includes(search)) {
+
+                door.style.display = "block";
+
+                found = true;
+
+            }
+
+            else {
+
+                door.style.display = "none";
+
+            }
+
+        }
+
+    });
+
+
+    if (found) {
+
+        result.textContent =
+            "تم العثور على الباب ✅";
+
+        result.style.color = "green";
+
+    }
+
+    else {
+
+        result.textContent =
+            "لم يتم العثور على هذا الباب ❌";
+
+        result.style.color = "red";
+
+    }
+
+}
+
+</script>
+
+
+<!-- زر الدخول للإدارة -->
+
+<a
+    href="/login"
+    class="admin-login">
+</a>
+
+
+</body>
+</html>
